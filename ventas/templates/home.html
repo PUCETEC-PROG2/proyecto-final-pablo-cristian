@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="container my-5">
+    <h2 class="text-center mb-4">🚴 Productos Destacados</h2>
+    
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for product in featured_products %}
+        <div class="col">
+            <div class="card h-100">
+                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.description }}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="h4 text-warning">${{ product.price }}</span>
+                        <a href="#" class="btn btn-auth">Ver detalle</a>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Última actualización: {{ product.updated_at|timesince }}</small>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center">
+            <div class="alert alert-dark">
+                No hay productos destacados disponibles
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

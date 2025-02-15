@@ -1,0 +1,148 @@
+/* Estilos generales */
+body {
+    background-color: #2A0944; /* Morado oscuro */
+    color: #6a0a6d;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Barra de navegación */
+.navbar {
+    background-color: #000000 !important;
+    padding: 1rem 2rem;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #A12568 !important; /* Morado claro */
+}
+
+.nav-link {
+    color: #FEC260 !important; /* Dorado */
+    margin: 0 15px;
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    color: #FF0075 !important; /* Rosa neón */
+}
+
+/* Botones */
+.btn-auth {
+    background-color: #3B185F;
+    border: 2px solid #A12568;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 25px;
+}
+
+.btn-auth:hover {
+    background-color: #A12568;
+    color: white;
+}
+
+/* Tarjetas de productos */
+.card {
+    background-color: #3B185F;
+    border: 1px solid #A12568;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 3px solid #A12568;
+}
+
+.card-title {
+    color: #FEC260;
+    font-weight: bold;
+}
+
+.card-text {
+    color: #FFFFFF;
+}
+
+/* Formulario de registro */
+.auth-form {
+    background-color: #3B185F;
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 500px;
+    margin: 2rem auto;
+}
+
+/* Estilos para inputs */
+.form-control {
+    background-color: #3B185F !important;
+    border: 1px solid #A12568 !important;
+    color: white !important;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(161, 37, 104, 0.25) !important;
+}
+
+/* Enlaces */
+.text-warning {
+    color: #FEC260 !important;
+    text-decoration: none;
+}
+
+.text-warning:hover {
+    color: #FF0075 !important;
+}
+
+/* Tablas */
+.table-dark {
+    background-color: #3B185F;
+    border: 1px solid #A12568;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #4d1f7a;
+}
+
+/* Botones pequeños */
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+/* Color principal */
+.btn-purple {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+    color: white;
+}
+
+.btn-purple:hover {
+    background-color: #5a32a3;
+    border-color: #5a32a3;
+}
+
+.bg-dark-purple {
+    background-color: #2A0944;
+    border: 1px solid #6f42c1;
+}
+/* Estilo consistente para todos los botones "Agregar" */
+.btn-purple {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+    color: white;
+    transition: all 0.3s;
+}
+
+.btn-purple:hover {
+    background-color: #5a32a3;
+    border-color: #5a32a3;
+    transform: translateY(-2px);
+}
+
+/* Eliminar acciones de editar/eliminar en compras */
+.table .btn-danger, .table .btn-warning {
+    display: none; 
+}

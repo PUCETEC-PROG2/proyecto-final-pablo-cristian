@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="mb-4">➕ Nueva Compra</h2>
+    
+    <form method="post" id="purchase-form">
+        {% csrf_token %}
+        
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="form-group">
+                    {{ form.client.label_tag }}
+                    {{ form.client }}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    {{ form.date.label_tag }}
+                    {{ form.date }}
+                </div>
+            </div>
+        </div>
+
+        <h4 class="mt-4">Productos</h4>
+        <div id="formset-container">
+            {{ formset.management_form }}
+            {% for form in formset %}
+                <div class="product-form row mb-3">
+                    <div class="col-md-5">
+                        {{ form.product.label_tag }}
+                        {{ form.product }}
+                    </div>
+                    <div class="col-md-3">
+                        {{ form.quantity.label_tag }}
+                        {{ form.quantity }}
+                    </div>
+                    <div class="col-md-3">
+                        <label>Subtotal:</label>
+                        <input type="text" class="form-control subtotal" readonly>
+                    </div>
+                    <div class="col-md-1">
+                        {{ form.DELETE.label_tag }}
+                        {{ form.DELETE }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="mt-4">
+            <h5>Total: $<span id="total">0.00</span></h5>
+        </div>
+
+        <div class="mt-4">
+            <button type="submit" class="btn btn-purple">Guardar Compra</button>
+            <a href="{% url 'compras' %}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const calculateTotal = () => {
+        let total = 0;
+        document.querySelectorAll('.product-form').forEach(form => {
+            const productSelect = form.querySelector('select[name$="-product"]');
+            const quantityInput = form.querySelector('input[name$="-quantity"]');
+            const subtotalField = form.querySelector('.subtotal');
+            
+            if (productSelect && quantityInput && !form.querySelector('.delete').checked) {
+                const price = parseFloat(productSelect.selectedOptions[0].dataset.price) || 0;
+                const quantity = parseFloat(quantityInput.value) || 0;
+                const subtotal = price * quantity;
+                
+                subtotalField.value = subtotal.toFixed(2);
+                total += subtotal;
+            }
+        });
+        document.getElementById('total').textContent = total.toFixed(2);
+    };
+
+    document.querySelectorAll('select[name$="-product"], input[name$="-quantity"]').forEach(element => {
+        element.addEventListener('change', calculateTotal);
+    });
+
+    calculateTotal(); // Cálculo inicial
+});
+</script>
+{% endblock %}

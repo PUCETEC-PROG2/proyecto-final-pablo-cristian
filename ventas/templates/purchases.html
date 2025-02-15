@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="mb-4">🛒 Compras</h2>
+    
+    <!-- Botón Agregar Compra -->
+    <div class="mb-4">
+        <a href="{% url 'nueva_compra' %}" class="btn btn-purple">
+            <i class="bi bi-cart-plus"></i> Nueva Compra
+        </a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-dark table-hover">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Cliente</th>
+                    <th>Total</th>
+                    <th>Detalles</th> <!-- Solo botón Ver -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for purchase in purchases %}
+                <tr>
+                    <td>{{ purchase.date|date:"d/m/Y" }}</td>
+                    <td>{{ purchase.client.name }}</td>
+                    <td>${{ purchase.total }}</td>
+                    <td>
+                        <!-- Solo botón de detalles -->
+                        <a href="{% url 'detalle_compra' purchase.pk %}" class="btn btn-sm btn-info">
+                            <i class="bi bi-eye"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
