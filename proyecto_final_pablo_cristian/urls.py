@@ -16,9 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from ventas import views  # Importa las vistas de tu app
+from django.conf import settings
+from django.conf.urls.static import static
+from ventas import views  
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('ventas.urls')),  # Todas las URLs de "ventas" estarán en la raíz
+    path('', include('ventas.urls')),  
 ]
+
+# Solo en desarrollo: servir archivos multimedia
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

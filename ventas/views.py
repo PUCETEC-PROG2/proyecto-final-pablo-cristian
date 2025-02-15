@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Product, Client, Purchase, PurchaseDetail
-from .forms import ClientForm, PurchaseForm
+from .models import Product, Client, Purchase, PurchaseDetail, Category
+
+from .forms import ClientForm, PurchaseForm, ProductForm
+
 from django.forms import inlineformset_factory
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -32,7 +34,6 @@ def home(request):
     return render(request, 'home.html', {'featured_products': featured_products})
 
 
-@login_required
 def products(request):
     category = request.GET.get('category')
     if category:
@@ -48,6 +49,7 @@ def products(request):
     })
 
 
+
 @login_required
 def clients(request):
     clients_list = Client.objects.all()
@@ -60,12 +62,6 @@ def purchases(request):
 
 @login_required
 def add_purchase(request):
-    if request.method == 'POST':
-        form = PurchaseForm(request.POST)
-        if form.is_valid():
-            purchase = form.save(commit=False)
-            purchase.date = timezone.now().date()  # Asignar fecha actual
-            purchase.save()
     PurchaseFormSet = inlineformset_factory(
         Purchase,
         PurchaseDetail,
@@ -78,7 +74,9 @@ def add_purchase(request):
         form = PurchaseForm(request.POST)
         formset = PurchaseFormSet(request.POST)
         if form.is_valid() and formset.is_valid():
-            purchase = form.save()
+            purchase = form.save(commit=False)
+            purchase.date = timezone.now().date()  # Asignar fecha actual
+            purchase.save()
             instances = formset.save(commit=False)
             for instance in instances:
                 instance.purchase = purchase
@@ -162,3 +160,14 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+@login_required
+def add_product(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('products')
+    else:
+        form = ProductForm()
+    return render(request, 'add_product.html', {'form': form})
