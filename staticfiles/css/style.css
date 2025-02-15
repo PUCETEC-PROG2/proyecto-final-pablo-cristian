@@ -1,0 +1,175 @@
+/* Estilos generales */
+body {
+    background-color: #1A1A1A; /* Fondo negro */
+    color: #FFFFFF;
+    font-family: 'Arial', sans-serif;
+}
+
+
+/* Barra de navegación */
+.navbar {
+    background-color: #000000 !important; /* Color negro */
+    padding: 1rem 2rem;
+    border-bottom: 2px solid #6f42c1;
+}
+
+/* Fondo negro debajo de la barra de navegación */
+.bg-purple {
+    background-color: #000000; /* Color negro */
+    height: 50vh; /* Hasta la mitad de la página */
+    position: absolute;
+    top: 56px; /* Altura de la barra de navegación */
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+
+
+
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FFFFFF !important;
+    text-shadow: none;
+}
+
+
+
+.nav-link {
+    color: #FFFFFF !important;
+    margin: 0 15px;
+    transition: 0.3s;
+    text-shadow: 0 0 3px #6f42c1;
+}
+
+
+.nav-link:hover {
+    color: #6f42c1 !important;
+    text-shadow: 0 0 10px #FFFFFF;
+}
+
+
+/* Botones */
+.btn-auth {
+    background-color: #6f42c1;
+    border: 2px solid #FFFFFF;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 25px;
+    box-shadow: 0 0 10px rgba(111, 66, 193, 0.5);
+}
+
+
+.btn-auth:hover {
+    background-color: #5a32a3;
+    color: white;
+    box-shadow: 0 0 15px rgba(111, 66, 193, 0.8);
+}
+
+
+/* Tarjetas de productos */
+.card {
+    background-color: #3B185F;
+    border: 1px solid #A12568;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 3px solid #A12568;
+}
+
+.card-title {
+    color: #FEC260;
+    font-weight: bold;
+}
+
+.card-text {
+    color: #FFFFFF;
+}
+
+/* Formulario de registro */
+.auth-form {
+    background-color: #3B185F;
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 500px;
+    margin: 2rem auto;
+}
+
+/* Estilos para inputs */
+.form-control {
+    background-color: #3B185F !important;
+    border: 1px solid #A12568 !important;
+    color: white !important;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(161, 37, 104, 0.25) !important;
+}
+
+/* Enlaces */
+.text-warning {
+    color: #FEC260 !important;
+    text-decoration: none;
+}
+
+.text-warning:hover {
+    color: #FF0075 !important;
+}
+
+/* Tablas */
+.table-dark {
+    background-color: #3B185F;
+    border: 1px solid #A12568;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #4d1f7a;
+}
+
+/* Botones pequeños */
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+/* Color principal */
+.btn-purple {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+    color: white;
+}
+
+.btn-purple:hover {
+    background-color: #5a32a3;
+    border-color: #5a32a3;
+}
+
+.bg-dark-purple {
+    background-color: #2A0944;
+    border: 1px solid #6f42c1;
+}
+/* Estilo consistente para todos los botones "Agregar" */
+.btn-purple {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+    color: white;
+    transition: all 0.3s;
+}
+
+.btn-purple:hover {
+    background-color: #5a32a3;
+    border-color: #5a32a3;
+    transform: translateY(-2px);
+}
+
+/* Eliminar acciones de editar/eliminar en compras */
+.table .btn-danger, .table .btn-warning {
+    display: none; 
+}

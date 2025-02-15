@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Product, Client, Purchase, PurchaseDetail, Category
 
-from .forms import ClientForm, PurchaseForm, ProductForm
+from .forms import ClientForm, PurchaseForm
+
 
 from django.forms import inlineformset_factory
 from django.contrib.auth import authenticate, login, logout
@@ -160,14 +161,3 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('login')
-
-@login_required
-def add_product(request):
-    if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('products')
-    else:
-        form = ProductForm()
-    return render(request, 'add_product.html', {'form': form})

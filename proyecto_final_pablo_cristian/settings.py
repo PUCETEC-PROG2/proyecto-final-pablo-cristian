@@ -120,8 +120,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -132,4 +134,4 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'  # Redirige al usuario a la página principal después de iniciar sesión
 LOGOUT_REDIRECT_URL = '/login/'  # Redirige al usuario al login después de cerrar sesión
 
-STATICFILES_DIRS = [BASE_DIR / "ventas/static",]
+STATICFILES_DIRS = [BASE_DIR / "static",]

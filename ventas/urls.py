@@ -13,7 +13,7 @@ urlpatterns = [
 
     # Productos
     path('products/', views.products, name='products'),
-    path('products/add/', views.add_product, name='add_product'),
+
 
     # Clientes
 
