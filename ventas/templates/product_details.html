@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <!-- Imagen del producto -->
+        <div class="col-md-6">
+            <div class="mb-4">
+                <div class="bg-light rounded p-3">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" class="img-fluid w-100" alt="{{ product.name }}" style="width: 100%; height: auto; object-fit: cover;">
+                    {% else %}
+                        <img src="{% static 'images/default-product.png' %}" class="img-fluid w-100" alt="Imagen no disponible" style="width: 100%; height: auto; object-fit: cover;">
+                    {% endif %}
+
+                </div>
+            </div>
+
+
+
+        </div>
+        
+        <!-- Detalles del producto -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title mb-4">{{ product.name }}</h1>
+                    
+                    <div class="mb-4">
+                        <span class="h3 text-success">${{ product.price }}</span>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h4>Descripción:</h4>
+                        <p class="card-text">{{ product.description }}</p>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'compras' %}" class="btn btn-primary btn-lg">
+                            <i class="bi bi-cart-plus"></i> Comprar
+                        </a>
+                        <a href="{% url 'products' %}" class="btn btn-outline-secondary">
+                            <i class="bi bi-arrow-left"></i> Volver a Productos
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

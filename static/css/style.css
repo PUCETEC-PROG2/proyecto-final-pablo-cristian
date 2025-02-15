@@ -80,10 +80,21 @@ body {
 }
 
 .card-img-top {
-    height: 200px;
+    width: 100%;
+    height: auto;
     object-fit: cover;
     border-bottom: 3px solid #A12568;
 }
+
+.product-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
 
 .card-title {
     color: #FEC260;
